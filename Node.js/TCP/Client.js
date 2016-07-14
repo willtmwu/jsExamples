@@ -1,8 +1,8 @@
 var net = require('net');
-var sys = require("sys");
+var sys = require("util");
 
 var HOST = '127.0.0.1';
-var PORT = 7031;
+var PORT = 8880;
 
 var client = new net.Socket();
 var stdin = process.openStdin();

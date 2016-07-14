@@ -9,5 +9,5 @@ var server = net.createServer(function (socket) {
   //socket.pipe(socket);
 });
 
-server.listen(7032, '127.0.0.1');
+server.listen(8880, '127.0.0.1');
 console.log('Store Server running at http://127.0.0.1:7032/');

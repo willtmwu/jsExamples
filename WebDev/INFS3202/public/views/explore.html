@@ -1,0 +1,159 @@
+<md-content flex layout-padding>
+  <md-tabs md-dynamic-height md-border-bottom md-selected="selectedTabIndex">
+    <md-tab label="Search">
+      <md-content class="md-padding" layout-padding layout="row">
+        <!-- Search Form-->
+        <form name="searchForm" flex>
+          <md-input-container class="md-block">
+            <label>Keyword</label>
+            <input md-maxlength="50" required name="keyword" ng-model="formData.keywordSrc">
+            <div ng-messages="searchForm.keyword.$error">
+              <div ng-message="required">This is required.</div>
+              <div ng-message="md-maxlength">Keywords less than 50 characters</div>
+            </div>
+          </md-input-container>
+          <md-input-container class="md-block">
+            <label>Sort By</label>
+            <md-select ng-model="formData.sortBySrc">
+              <md-option ng-repeat="sortBy in sort_by" ng-value="sortBy">
+                {{sortBy}}
+              </md-option>
+            </md-select>
+          </md-input-container>
+          <div layout="row">
+            <md-input-container flex="33">
+              <label>Country</label>
+              <md-select ng-model="formData.countrySrc" ng-change="getSelectedState()">
+                <md-option ng-repeat="country in countries" ng-value="country.name">
+                  {{country.name}}
+                </md-option>
+              </md-select>
+            </md-input-container>
+            <md-input-container flex="33">
+              <label>State</label>
+              <md-select ng-model="stateSrc" ng-change="getSelectedCity()">
+                <md-option ng-repeat="state in stateList" ng-value="state.name">
+                  {{state.name}}
+                </md-option>
+              </md-select>
+            </md-input-container>
+            <md-input-container flex="33">
+              <label>City</label>
+              <md-select ng-model="formData.citySrc">
+                <md-option ng-repeat="city in cityList" ng-value="city">
+                  {{city}}
+                </md-option>
+              </md-select>
+            </md-input-container>
+          </div>
+          <md-input-container ng-show="formData.citySrc" class="md-block">
+            <label>Search Radius</label>
+            <md-select ng-model="formData.radiusSrc">
+              <md-option ng-repeat="radius in search_radius" ng-value="radius">
+                {{radius}}
+              </md-option>
+            </md-select>
+          </md-input-container>
+          <md-input-container class="md-block">
+            <label>Event Price</label>
+            <md-select ng-model="formData.priceSrc">
+              <md-option ng-repeat="price in event_price" ng-value="price">
+                {{price}}
+              </md-option>
+            </md-select>
+          </md-input-container>
+          <md-input-container class="md-block">
+            <label>Category</label>
+            <md-select ng-model="formData.categorySrc">
+              <md-option ng-repeat="category in event_category" ng-value="category.id">
+                {{category.name}}
+              </md-option>
+            </md-select>
+          </md-input-container>
+          <div>
+            <md-button tclass="md-raised md-primary" type="submit" ng-click="queryEventbrite()" ng-disabled="searchForm.$invalid">Search</md-button>
+          </div>
+        </form>
+      </md-content>
+    </md-tab>
+    <md-tab label="Events">
+      <md-content class="md-padding" layout-padding layout-fill layout="row">
+        <div layout="column" style="height: 100%">
+          <md-content layout-fill flex="50" ng-show="!events_page.events">
+            <h1>Search Results Empty</h1></md-content>
+          <md-content flex-gt-sm="50" flex>
+            <md-card md-theme="default" md-theme-watch ng-repeat="event in events_page.events" ng-click="showEventDetails(event)">
+              <md-card-title>
+                <md-card-title-text>
+                  <span class="md-headline">{{event.name.text}}</span>
+                  <span class="md-subhead">Venue: {{event.venue.name}}</span>
+                </md-card-title-text>
+                <md-card-title-media ng-show="{{event.logo}}">
+                  <img ng-src="{{event.logo.url}}" class="md-media-sm card-media" alt="Event Logo">
+                </md-card-title-media>
+              </md-card-title>
+              <md-card-actions layout="row" layout-align="end center">
+                <md-button ng-href={{event.url}} target="_blank">More Info</md-button>
+                <md-button ng-click="saveEvents(event)">Save Event</md-button>
+              </md-card-actions>
+            </md-card>
+          </md-content>
+        </div>
+        <md-content flex="50" data-ng-if="largeScreen" layout="column" style="height: 100%">
+          <md-toolbar class="md-accent">
+            <h2 class="md-toolbar-tools">
+        	<span>Event Details</span>
+	      </h2>
+          </md-toolbar>
+          <!--Name, date, organisor, location, descroption, free/paid -->
+          <md-card md-theme="default" md-theme-watch ng-show=selectedEvent.name>
+            <img ng-show=selectedEvent.logo ng-src="{{selectedEvent.logo.url}}" class="md-card-image" alt="Event Banner">
+            <md-card-title>
+              <md-card-title-text>
+                <span class="md-headline">{{selectedEvent.name.text}}</span>
+                <span class="md-subhead">Venue: {{selectedEvent.venue.name}}</span>
+              </md-card-title-text>
+            </md-card-title>
+            <md-card-content>
+              {{selectedEvent.description.text}}
+            </md-card-content>
+          </md-card>
+        </md-content>
+      </md-content>
+    </md-tab>
+    <md-tab label="Maps">
+      <md-content class="md-padding" layout="row" layout-xs="column">
+        <md-content flex-gt-xs="50" flex-xs>
+          <div layout="column" layout-fill>
+            <ng-map style="height: 700px" zoom="6" center="[-34.397, 150.644]">
+            </ng-map>
+          </div>
+        </md-content>
+        <md-content flex-gt-xs="50" flex-xs layout="column">
+          <md-toolbar class="md-accent">
+            <h2 class="md-toolbar-tools">
+        	<span>Event Details</span>
+	      </h2>
+          </md-toolbar>
+          <md-card md-theme="default" ng-show=current_event>
+            <img ng-show=current_event.logo ng-src="{{current_event.logo.url}}" class="md-card-image" alt="Event Pic">
+            <md-card-title>
+              <md-card-title-text>
+                <span class="md-headline">{{current_event.name.text}}</span>
+                <span class="md-subhead">Venue: {{current_event.venue.name}}</span>
+              </md-card-title-text>
+            </md-card-title>
+            <md-card-content>
+              <p>
+                {{current_event.description.text}}
+              </p>
+            </md-card-content>
+            <md-card-actions layout="row" layout-align="end center">
+              <md-button ng-href={{current_event.url}} target="_blank">More info</md-button>
+            </md-card-actions>
+          </md-card>
+        </md-content>
+      </md-content>
+    </md-tab>
+  </md-tabs>
+</md-content>

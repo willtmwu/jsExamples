@@ -1,0 +1,11 @@
+{
+  "name": "events-explorer",
+  "version": "1.0.0",
+  "dependencies": {
+    "angular": "latest",
+    "angular-route": "latest",
+    "angular-material": "latest",
+    "ngmap": "latest",
+    "material-design-icons": "^3.0.1"
+  }
+}

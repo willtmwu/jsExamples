@@ -1,0 +1,61 @@
+<div layout="column" ng-cloak>
+  <md-content class="md-no-momentum" layout-padding>
+    <md-tabs md-dynamic-height md-border-bottom>
+      <md-tab label="Submit a Review">
+        <md-content class="md-padding">
+          <form name="reviewForm">
+            <md-input-container class="md-block">
+              <md-icon class="md-default-theme" class="material-icons">person</md-icon>
+              <label>Author</label>
+              <input required name="authorName" ng-model="formData.author">
+              <div ng-messages="reviewForm.authorName.$error">
+                <div ng-message="required">Name is required</div>
+              </div>
+            </md-input-container>
+
+            <md-input-container class="md-block">
+              <md-icon class="md-default-theme" class="material-icons">email</md-icon>
+              <label>Email</label>
+              <input required type="email" name="authorEmail" ng-model="formData.email" minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
+              <div ng-messages="reviewForm.authorEmail.$error" role="alert">
+                <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+                  Your email must enter a valid email address
+                </div>
+              </div>
+            </md-input-container>
+
+            <md-input-container class="md-block">
+              <md-icon class="md-default-theme" class="material-icons">subject</md-icon>
+              <label>Comment</label>
+              <textarea required name="authorComment" ng-model="formData.comment" md-maxlength="250" rows="5" md-select-on-focus></textarea>
+              <div ng-messages="reviewForm.authorComment.$error">
+                <div ng-message="required">Please leave a comment</div>
+              </div>
+            </md-input-container>
+
+            <div>
+              <md-button class="md-raised md-primary" type="submit" ng-click="submitReview()" ng-disabled="reviewForm.$invalid">Submit</md-button>
+            </div>
+        </md-content>
+      </md-tab>
+      <md-tab label="User Reviews">
+        <md-content class="md-padding">
+          <md-list>
+            <md-list-item class="md-3-line" ng-repeat="review in reviews">
+              <img ng-src="/img/review_profile/{{review.picture}}" alt="Lego" class="md-avatar">
+              <div class="md-list-item-text" layout="column">
+                <h3>{{review.author}}</h3>
+                <h4>{{review.date | date:'medium'}}</h4>
+                <p>
+                  {{review.comment}}
+                </p>
+              </div>
+              <md-divider inset></md-divider>
+            </md-list-item>
+          </md-list>
+        </md-content>
+      </md-tab>
+    </md-tabs>
+    </form>
+  </md-content>
+</div>

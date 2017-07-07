@@ -1,0 +1,28 @@
+<md-toolbar class="md-hue-3">
+	<div class="md-toolbar-tools">
+		<h2>
+			<span>Events Saved: {{user_events.length}}</span>
+		</h2>
+		<span flex></span>
+		<md-button class="md-raised" aria-label="Logout" ng-href="/logout" target="_self">
+			Logout
+		</md-button>
+	</div>
+</md-toolbar>
+<md-content class="md-padding">
+	<md-card md-theme="default" md-theme-watch ng-repeat="event in user_events">
+		<md-card-title>
+			<md-card-title-text>
+				<span class="md-headline">{{event.name}}</span>
+				<span class="md-subhead">Venue: {{event.venue}}</span>
+			</md-card-title-text>
+			<md-card-title-media data-ng-if=event.logo_url>
+				<img ng-src="{{event.logo_url}}" class="md-media-sm card-media" alt="Event Logo">
+			</md-card-title-media>
+		</md-card-title>
+		<md-card-actions layout="row" layout-align="end center">
+			<md-button ng-href={{event.evb_url}} target="_blank">More Info</md-button>
+			<md-button ng-click="removeEvents(event)">Delete Event</md-button>
+		</md-card-actions>
+	</md-card>
+</md-content>

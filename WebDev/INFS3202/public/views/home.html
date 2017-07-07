@@ -1,0 +1,177 @@
+<!--
+Features: Explore. Save. Review
+Development: Angular Material UI, Express/Node routing MongoDB storage
+Data: Eventbrite API
+Hosting: Heroku on free tier
+Responsitory: Github coming soon August 2017
+Author: William Wu
+-->
+
+<div ng-cloak>
+  <md-content class="md-padding" layout-xs="column" layout="row">
+    <div flex-xs flex-gt-xs="70" layout="column">
+      <md-card md-theme="dark-grey" md-theme-watch>
+        <img ng-src="img/home/explore.jpg" class="md-card-image" alt="Home Banner">
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">Introduction</span>
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+          <p>
+            Welcome to the Events Explorer web application. This is the home page for an individual project developed for the university course INFS3202. Using the MEAN development stack, and Angular Material UI Library.
+          </p>
+          <p>
+            To navigate the website, the left side panel is a navigation drawer. There is a webpage for help on FAQ. An option is also included to leave a review for the website.
+          </p>
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button ng-href="/help">Go to help section</md-button>
+        </md-card-actions>
+      </md-card>
+      <md-card md-theme="dark-orange" md-theme-watch>
+        <img ng-src="img/home/app.jpg" class="md-card-image" alt="feature pic">
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">Application Features</span>
+            <span class="md-subhead">Explore, Save Events and Leave a Review</span>
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+          <p>
+            The main features of the application all revolve around Events, being able to search for and save events. After users have logged in, they can save and then later view their saved events.
+          </p>
+          <p>
+            In addition, users can also leave a review about the website and view reviews from other users.
+          </p>
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button ng-href="/explore">Get started</md-button>
+        </md-card-actions>
+      </md-card>
+    </div>
+    <div flex-xs flex-gt-xs="30" layout="column">
+      <md-card md-theme="dark-red" md-theme-watch>
+        <md-card-title>
+          <md-card-title-text layout-align="right">
+            <span class="md-headline">MEAN Stack</span>
+            <span class="md-subhead">Web Application Development</span>
+          </md-card-title-text>
+          <md-card-title-media>
+            <img ng-src="http://mean.io/wp-content/themes/twentysixteen-child/images/meanlogo.png" class="md-media-sm card-media" alt="MEAN Logo">
+          </md-card-title-media>
+        </md-card-title>
+        <md-card-content>
+          The MEAN stack stands for a full web application development stack composed of M(ongoDB) E(xpress) A(ngular) N(ode)
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button ng-href="http://mean.io/" target="_blank">Learn more</md-button>
+        </md-card-actions>
+      </md-card>
+      <md-card md-theme="dark-blue" md-theme-watch>
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">Angular Material</span>
+            <span class="md-subhead">UI Design</span>
+          </md-card-title-text>
+          <md-card-title-media>
+            <img ng-src="https://material.angularjs.org/latest/img/icons/angular-logo.svg" class="md-media-sm card-media" alt="Angular Material Logo">
+          </md-card-title-media>
+        </md-card-title>
+        <md-card-content>
+          Angular material is a UI framework that conforms to the material design specifications using AngularJS
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button ng-href="https://material.angularjs.org/latest/" target="_blank">Learn more</md-button>
+        </md-card-actions>
+      </md-card>
+      <md-card md-theme="dark-lime" md-theme-watch>
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">Eventbrite API</span>
+            <span class="md-subhead">Data requests</span>
+          </md-card-title-text>
+          <md-card-title-media>
+            <img ng-src="https://cdn.evbstatic.com/s3-build/perm_001/48d2e1/django/images/logos/eb_logo_white_1200x1200.png" class="md-media-sm card-media" alt="Angular Material Logo">
+          </md-card-title-media>
+        </md-card-title>
+        <md-card-content>
+          Eventbrite API was used to obtain events from the service and displayed to end users
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button ng-href="https://www.eventbrite.com.au/developer/v3/" target="_blank">Learn more</md-button>
+        </md-card-actions>
+      </md-card>
+      <md-card md-theme="dark-indigo" md-theme-watch>
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">Heroku Hosting</span>
+            <span class="md-subhead">Application hosting</span>
+          </md-card-title-text>
+          <md-card-title-media>
+            <img ng-src="https://a.slack-edge.com/ae7f/plugins/heroku/assets/service_512.png" class="md-media-sm card-media" alt="Angular Material Logo">
+          </md-card-title-media>
+        </md-card-title>
+        <md-card-content>
+          The final application was hosted on Heroku as a free tier application
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button ng-href="https://www.heroku.com/" target="_blank">Learn more</md-button>
+        </md-card-actions>
+      </md-card>
+
+    </div>
+  </md-content>
+  <!--_______________CHANGE FLEX LAYOUT___________________-->
+  <md-divider></md-divider>
+  <md-content class="md-padding" layout-xs="column" layout="row">
+    <div flex-xs flex-gt-xs="40" layout="column">
+      <md-card md-theme="dark-grey" md-theme-watch>
+        <img ng-src="img/home/review.jpg" class="md-card-image" alt="Home Banner">
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">Credits</span>
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+          <p>
+            Friends, family, good documentation and stack overflow
+          </p>
+        </md-card-content>
+      </md-card>
+    </div>
+    <div flex-xs flex-gt-xs="60" layout="column">
+      <md-card md-theme="dark-purple" md-theme-watch>
+        <md-card-title>
+          <md-card-title-text layout-align="right">
+            <span class="md-headline">Developer Profile</span>
+            <span class="md-subhead">Spent way too long on this project...</span>
+          </md-card-title-text>
+          <md-card-title-media>
+            <img ng-src="{{imagePath}}" class="md-media-sm card-media" alt="MEAN Logo">
+          </md-card-title-media>
+        </md-card-title>
+        <md-card-content>
+          <p>6th Year Engineering Student etc.</p>
+        </md-card-content>
+      </md-card>
+      <md-card md-theme="dark-blue" md-theme-watch>
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">Github Repo</span>
+            <span class="md-subhead">Coming soon....2018</span>
+          </md-card-title-text>
+          <md-card-title-media>
+            <img ng-src="{{imagePath}}" class="md-media-sm card-media" alt="Angular Material Logo">
+          </md-card-title-media>
+        </md-card-title>
+        <md-card-content>
+          <p>The entire assignment code will be released on github after all semester assessments finish</p>
+        </md-card-content>
+        <!--<md-card-actions layout="row" layout-align="end center">
+          <md-button ng-href="/help" target="_self">Github Link</md-button>
+        </md-card-actions>-->
+      </md-card>
+    </div>
+  </md-content>
+</div>
